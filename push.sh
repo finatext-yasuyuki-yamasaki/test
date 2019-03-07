@@ -6,7 +6,13 @@ if [ -z "$(git branch | grep '*' | grep productio)" ];then
 fi
 
 if [ -n "$(git diff)" ];then
-   echo "Branch is not production!"
+   echo "diff."
    exit 1;
 fi
-"Branch is not production!!"
+
+if [ -n "$(git diff)" ];then
+   echo "diff."
+   exit 1;
+fi
+
+git pull
