@@ -5,14 +5,9 @@ if [ -z "$(git branch | grep '*' | grep productio)" ];then
    exit 1;
 fi
 
-if [ -n "$(git diff)" ];then
-   echo "diff."
+git fetch
+
+if [ -n "$(git diff HEAD..origin/production)" ];then
+   echo "Please 'git diff HEAD..origin/production.'"
    exit 1;
 fi
-
-if [ -n "$(git diff)" ];then
-   echo "diff."
-   exit 1;
-fi
-
-git pull
